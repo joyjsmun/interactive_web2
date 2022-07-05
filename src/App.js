@@ -2,7 +2,9 @@
 import styled from "styled-components";
 
 const Main = styled.div`
-  background-color: "tomato";
+  background-color: tomato;
+  width: 100vw;
+  height: 100vh;
 `
 const ProgressBarCon = styled.div``
 const ProgressBar = styled.div``
@@ -31,15 +33,36 @@ const Stage = styled.div`
 const House = styled.div`
   width: 100vw;
   height: 100vh;
-  transform-style: preserve-3d;  
+  transform-style: preserve-3d; 
+  // house를 줌아웃시킴 
+  transform: translateZ(-490vw);
 `
-const Wall = styled.div`
-//모두 포게기
-  position: absolute;
-  width: 100vw;
+// const Wall = styled.div`
+// //모두 포게기
+//   position: absolute;
+//   left: 0;
+//   top: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(255,255,255,0.8);
+// `
+
+// const WallLeft = styled.div`
+//   left: -500vw;
+// 	width: 1000vw;
+// 	transform: rotateY(90deg);
+// `
+
+const WallContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  background: rgba(255,255,255,0.8);
-  
+
+`
+
+const WallTitle = styled.h2`
+  font-size: 5rem;
 `
 
 
@@ -58,28 +81,28 @@ function App() {
       <World>
         <Stage>
           <House>
-            <Wall className="wall-left"></Wall>
-            <Wall className="wall-right"></Wall>
-            <Wall className="wall-front wall-front-a">
-              <div className="wall-content">
-                <h2 className="wall-title">안녕하세요</h2>
-              </div>
-            </Wall>
-            <Wall className="wall-front wall-front-b">
-              <div className="wall-content">
-                <h2 className="wall-title">Hello</h2>
-              </div>
-            </Wall>
-            <Wall className="wall-front wall-front-c">
-              <div className="wall-content">
-                <h2 className="wall-title">Hola</h2>
-              </div>
-            </Wall>
-            <Wall className="wall-front wall-front-d">
-              <div className="wall-content">
-                <h2 className="wall-title">你好</h2>
-              </div>
-            </Wall>
+            <div className="wall wall-left"></div>
+            <div className="wall wall-right"></div>
+            <div className="wall wall-front wall-front-a">
+              <WallContent>
+                <WallTitle>안녕하세요</WallTitle>
+              </WallContent>
+            </div>
+            <div className="wall wall-front wall-front-b">
+              <WallContent>
+                <WallTitle>Hello</WallTitle>
+              </WallContent>
+            </div>
+            <div className="wall wall-front wall-front-c">
+              <WallContent>
+                <WallTitle>Hola</WallTitle>
+              </WallContent>
+            </div>
+            <div className="wall wall-front wall-front-d">
+              <WallContent>
+                <WallTitle>你好</WallTitle>
+              </WallContent>
+            </div>
           </House>
         </Stage>
      </World>

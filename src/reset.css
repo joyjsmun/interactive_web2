@@ -35,3 +35,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.wall {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(255,255,255,0.8);
+}
+
+.wall-left {
+	/* left: -500vw; */
+	width: 1000vw;
+	background-color: rgb(231, 226, 219);
+	transform: rotateY(90deg) translateZ(-500vw);
+}
+
+.wall-right {
+	/* left: -400vw; */
+	width: 1000vw;
+	background-color: rgb(231, 226, 219);
+	transform: rotateY(90deg) translateZ(-400vw);;
+}
+
+.wall-front-a {transform:translateZ(300vw);}
+.wall-front-b {transform:translateZ(50vw);}
+.wall-front-c {transform:translateZ(-200vw);}
+.wall-front-d {transform:translateZ(-500vw);}
