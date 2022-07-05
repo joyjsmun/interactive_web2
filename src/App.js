@@ -1,30 +1,59 @@
 
 import styled from "styled-components";
 
-const Main = styled.div``
+const Main = styled.div`
+  background-color: "tomato";
+`
 const ProgressBarCon = styled.div``
 const ProgressBar = styled.div``
 
 const SelectCharacter = styled.div``
 
-const World = styled.div``
+const World = styled.div`
+  position: fixed;
+  left: 0;
+  right: 0;
+  perspective: 1000px;
+  width: 100vw;
+  height: 100vh;
+`
 
-const Stage = styled.div``
-const House = styled.div``
-const Wall = styled.div``
+const Stage = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  //3d 기능 전달
+  transform-style: preserve-3d;  
+
+`
+const House = styled.div`
+  width: 100vw;
+  height: 100vh;
+  transform-style: preserve-3d;  
+`
+const Wall = styled.div`
+//모두 포게기
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255,255,255,0.8);
+  
+`
 
 
 function App() {
   return (
     <Main>
-      <ProgressBarCon>
+      {/* <ProgressBarCon>
         <ProgressBar></ProgressBar>
       </ProgressBarCon>
 
       <SelectCharacter>
         <button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni"></button>
         <button class="select-character-btn select-character-btn-ragirl" data-char="ragirl"></button>
-      </SelectCharacter>      
+      </SelectCharacter>       */}
 
       <World>
         <Stage>
