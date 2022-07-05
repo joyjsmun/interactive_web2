@@ -1,10 +1,11 @@
 
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const Main = styled.div`
   background-color: tomato;
   width: 100vw;
-  height: 100vh;
+  height: 500vh;
 `
 const ProgressBarCon = styled.div``
 const ProgressBar = styled.div``
@@ -67,6 +68,28 @@ const WallTitle = styled.h2`
 
 
 function App() {
+  const [scrollY,setScrollY] = useState(0);
+  let maxScrollValue = document.body.offsetHeight - window.innerHeight;
+  const houseElem = document.querySelector('#House');
+
+  const logit = () => {
+    setScrollY(window.pageYOffset);
+    let zMove = (scrollY /maxScrollValue) *1000;
+    let finalMove = zMove - 490;
+    houseElem.style.transform = 'translateZ('+ finalMove + 'vw)';
+  }
+
+  useEffect(() => {
+    function watchScroll() {
+      window.addEventListener("scroll", logit);
+    }
+    watchScroll();
+    return () => {
+      window.removeEventListener("scroll", logit);
+    };
+
+      });
+  
   return (
     <Main>
       {/* <ProgressBarCon>
@@ -80,7 +103,7 @@ function App() {
 
       <World>
         <Stage>
-          <House>
+          <House id="House">
             <div className="wall wall-left"></div>
             <div className="wall wall-right"></div>
             <div className="wall wall-front wall-front-a">
