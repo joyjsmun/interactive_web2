@@ -79,12 +79,15 @@ const WallTitle = styled.h2`
   font-size: 5rem;
 `
 
+const Character = styled.div``
 
 function App() {
   const [scrollY,setScrollY] = useState(0);
   let maxScrollValue;
   const houseElem = document.querySelector('#House');
   const barElem = document.querySelector('#progress-bar');
+  const mousePos = {x:0 , y:0};
+  const stageElem = document.querySelector('#stage');
 
   const logit = () => {
     setScrollY(window.pageYOffset);
@@ -93,6 +96,7 @@ function App() {
     //초기 -490vw 해줬던값을 빼줌 
     let finalMove = zMove *980- 490;
     houseElem.style.transform = 'translateZ('+ finalMove + 'vw)';
+
     //Progress Bar
     barElem.style.width = zMove *100 + '%';
   }
@@ -112,9 +116,22 @@ function App() {
 
       });
 
+      //mouse 위치에 따른 시점변환
+      window.addEventListener('mousemove',(e) => {
+        mousePos.x = -1 +(e.clientX / window.innerWidth) *2;
+        mousePos.y = 1 -(e.clientY/window.innerHeight) *2;
+        console.log(mousePos)
+
+        stageElem.style.transform = 'rotateX('+( mousePos.y*5)+'deg) rotateY('+ (mousePos.x*5 )+'deg)';
+        
+        //console.log(e.clientX,e.clientY)
+      })
+
       window.addEventListener('resize',resizeHandler);
 
       resizeHandler()
+
+
   
   return (
     <Main>
@@ -128,7 +145,7 @@ function App() {
       </SelectCharacter>       */}
 
       <World>
-        <Stage>
+        <Stage id="stage">
           <House id="House">
             <div className="wall wall-left"></div>
             <div className="wall wall-right"></div>
@@ -153,6 +170,37 @@ function App() {
               </WallContent>
             </div>
           </House>
+
+        {/* 케릭터 놓이는 부분 */}
+        <Character>
+          <div className="char-face-con char-head">
+            <div className="char-face char-head-face face-front"></div> 
+            <div className="char-face char-head-face face-back"></div>  
+          </div> 
+          <div className="char-face-con char-torso">
+            <div className="char-face char-torso-face face-front"></div> 
+            <div className="char-face char-torso-face face-back"></div>  
+          </div> 
+          <div className="char-face-con char-arm char-arm-right">
+            <div className="char-face char-arm-face face-front"></div> 
+            <div className="char-face char-arm-face face-back"></div>  
+          </div>
+          <div className="char-face-con char-arm char-arm-left">
+            <div className="char-face char-arm-face face-front"></div> 
+            <div className="char-face char-arm-face face-back"></div>  
+          </div>
+          <div className="char-face-con char-leg char-lefg-right">
+            <div className="char-face char-leg-face face-front"></div> 
+            <div className="char-face char-leg-face face-back"></div>  
+          </div>
+          <div className="char-face-con char-leg char-lefg-left">
+            <div className="char-face char-leg-face face-front"></div> 
+            <div className="char-face char-leg-face face-back"></div>  
+          </div>
+        </Character>
+
+
+
         </Stage>
      </World>
     </Main>
