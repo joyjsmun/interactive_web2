@@ -172,35 +172,32 @@ function App() {
           </House>
 
         {/* 케릭터 놓이는 부분 */}
-        <Character>
-          <div className="char-face-con char-head">
-            <div className="char-face char-head-face face-front"></div> 
-            <div className="char-face char-head-face face-back"></div>  
+        <Character id="character">
+          <div className="character-face-con character-head">
+            <div className="character-face character-head-face face-front"></div> 
+            <div className="character-face character-head-face face-back"></div>  
           </div> 
-          <div className="char-face-con char-torso">
-            <div className="char-face char-torso-face face-front"></div> 
-            <div className="char-face char-torso-face face-back"></div>  
+          <div className="character-face-con character-torso">
+            <div className="character-face character-torso-face face-front"></div> 
+            <div className="character-face character-torso-face face-back"></div>  
           </div> 
-          <div className="char-face-con char-arm char-arm-right">
-            <div className="char-face char-arm-face face-front"></div> 
-            <div className="char-face char-arm-face face-back"></div>  
+          <div className="character-face-con character-arm character-arm-right">
+            <div className="character-face character-arm-face face-front"></div> 
+            <div className="character-face character-arm-face face-back"></div>  
           </div>
-          <div className="char-face-con char-arm char-arm-left">
-            <div className="char-face char-arm-face face-front"></div> 
-            <div className="char-face char-arm-face face-back"></div>  
+          <div className="character-face-con character-arm character-arm-left">
+            <div className="character-face character-arm-face face-front"></div> 
+            <div className="character-face character-arm-face face-back"></div>  
           </div>
-          <div className="char-face-con char-leg char-lefg-right">
-            <div className="char-face char-leg-face face-front"></div> 
-            <div className="char-face char-leg-face face-back"></div>  
+          <div className="character-face-con character-leg character-lefg-right">
+            <div className="character-face character-leg-face face-front"></div> 
+            <div className="character-face character-leg-face face-back"></div>  
           </div>
-          <div className="char-face-con char-leg char-lefg-left">
-            <div className="char-face char-leg-face face-front"></div> 
-            <div className="char-face char-leg-face face-back"></div>  
+          <div className="character-face-con character-leg character-lefg-left">
+            <div className="character-face character-leg-face face-front"></div> 
+            <div className="character-face character-leg-face face-back"></div>  
           </div>
         </Character>
-
-
-
         </Stage>
      </World>
     </Main>
