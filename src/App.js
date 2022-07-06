@@ -7,8 +7,21 @@ const Main = styled.div`
   width: 100vw;
   height: 500vh;
 `
-const ProgressBarCon = styled.div``
-const ProgressBar = styled.div``
+const ProgressBarCon = styled.div`
+  position: fixed;
+  right: 0;
+  bottom:0;
+  z-index: 100;
+  width: 100vw;
+  height: 5px;
+  background: #34495e;
+`
+const ProgressBar = styled.div`
+  width: 0;
+  height: 100%;
+  background: #e74c3c;
+
+`
 
 const SelectCharacter = styled.div``
 
@@ -69,14 +82,23 @@ const WallTitle = styled.h2`
 
 function App() {
   const [scrollY,setScrollY] = useState(0);
-  let maxScrollValue = document.body.offsetHeight - window.innerHeight;
+  let maxScrollValue;
   const houseElem = document.querySelector('#House');
+  const barElem = document.querySelector('#progress-bar');
 
   const logit = () => {
     setScrollY(window.pageYOffset);
-    let zMove = (scrollY /maxScrollValue) *1000;
-    let finalMove = zMove - 490;
+    //1000 => 980 house 외벽 보여줌
+    let zMove = (scrollY /maxScrollValue) ;
+    //초기 -490vw 해줬던값을 빼줌 
+    let finalMove = zMove *980- 490;
     houseElem.style.transform = 'translateZ('+ finalMove + 'vw)';
+    //Progress Bar
+    barElem.style.width = zMove *100 + '%';
+  }
+
+  const resizeHandler = () => {
+    maxScrollValue = document.body.offsetHeight - window.innerHeight;
   }
 
   useEffect(() => {
@@ -89,14 +111,18 @@ function App() {
     };
 
       });
+
+      window.addEventListener('resize',resizeHandler);
+
+      resizeHandler()
   
   return (
     <Main>
-      {/* <ProgressBarCon>
-        <ProgressBar></ProgressBar>
+      <ProgressBarCon>
+        <ProgressBar id="progress-bar"></ProgressBar>
       </ProgressBarCon>
 
-      <SelectCharacter>
+      {/* <SelectCharacter>
         <button class="select-character-btn select-character-btn-ilbuni" data-char="ilbuni"></button>
         <button class="select-character-btn select-character-btn-ragirl" data-char="ragirl"></button>
       </SelectCharacter>       */}
